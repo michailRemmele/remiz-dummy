@@ -1,0 +1,10 @@
+{
+  "components.snakeSegment.title": "Snake Segment",
+  "components.snakeSegment.index.title": "Index",
+
+  "components.orb.title": "Orb",
+
+  "components.score.title": "Score",
+
+  "systems.orbSpawner.title": "Orb Spawner"
+}

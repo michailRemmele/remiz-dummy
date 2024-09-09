@@ -1,0 +1,590 @@
+{
+  "scenes": [
+    {
+      "id": "8aa8d080-b995-4892-b718-829dd717612c",
+      "name": "MainMenu",
+      "systems": [
+        {
+          "name": "UiBridge",
+          "options": {
+            "filterComponents": []
+          }
+        }
+      ],
+      "levelId": null
+    },
+    {
+      "id": "cd85bb20-d3c0-42e1-840b-d5dc5f09daef",
+      "name": "Game",
+      "systems": [
+        {
+          "name": "PhysicsSystem",
+          "options": {
+            "gravitationalAcceleration": 300
+          }
+        },
+        {
+          "name": "CameraSystem",
+          "options": {
+            "windowNodeId": "root",
+            "initialCamera": "0f754dc8-612c-434e-bacd-ba047f23a873",
+            "scaleSensitivity": 0
+          }
+        },
+        {
+          "name": "KeyboardInputSystem",
+          "options": {
+            "useWindow": true
+          }
+        },
+        {
+          "name": "KeyboardControlSystem",
+          "options": {}
+        },
+        {
+          "name": "OrbSpawner",
+          "options": {}
+        },
+        {
+          "name": "ScriptSystem",
+          "options": {}
+        },
+        {
+          "name": "SpriteRenderer",
+          "options": {
+            "windowNodeId": "root",
+            "backgroundColor": "#a9e003",
+            "backgroundAlpha": 1
+          }
+        },
+        {
+          "name": "UiBridge",
+          "options": {
+            "filterComponents": []
+          }
+        },
+        {
+          "name": "GameStatsMeter",
+          "options": {
+            "frequency": 1000
+          }
+        }
+      ],
+      "levelId": "814bb481-8226-4f26-8df4-7963417938ec"
+    }
+  ],
+  "levels": [
+    {
+      "id": "814bb481-8226-4f26-8df4-7963417938ec",
+      "name": "Demo Level",
+      "actors": [
+        {
+          "id": "292788ea-cc9d-4270-b851-274479954dbb",
+          "name": "Background",
+          "components": [
+            {
+              "name": "Transform",
+              "config": {
+                "offsetX": 0,
+                "offsetY": 0,
+                "offsetZ": 0,
+                "rotation": 0,
+                "scaleX": 1,
+                "scaleY": 1
+              }
+            },
+            {
+              "name": "Sprite",
+              "config": {
+                "src": "",
+                "width": 200,
+                "height": 200,
+                "slice": 1,
+                "rotation": 0,
+                "sortCenter": [
+                  0,
+                  0
+                ],
+                "flipX": false,
+                "flipY": false,
+                "sortingLayer": "background",
+                "fit": "stretch",
+                "material": {
+                  "type": "basic",
+                  "options": {
+                    "blending": "normal",
+                    "color": "#a9e003",
+                    "opacity": 1
+                  }
+                }
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": "cc4ec9e8-ccfb-4c24-b522-07862e59c877",
+          "templateId": "c3810062-9f76-477b-8e37-e33aee86dde1",
+          "fromTemplate": true,
+          "name": "Wall Horizontal",
+          "components": [
+            {
+              "name": "Transform",
+              "config": {
+                "offsetX": 0,
+                "offsetY": -104,
+                "offsetZ": 0,
+                "rotation": 0,
+                "scaleX": 1,
+                "scaleY": 1
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": "2d590a82-39ec-462f-992e-fe96cf052bfe",
+          "templateId": "c3810062-9f76-477b-8e37-e33aee86dde1",
+          "fromTemplate": true,
+          "name": "Wall Horizontal 1",
+          "components": [
+            {
+              "name": "Transform",
+              "config": {
+                "offsetX": 0,
+                "offsetY": 104,
+                "offsetZ": 0,
+                "rotation": 0,
+                "scaleX": 1,
+                "scaleY": 1
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": "c93b2923-fad1-43e4-8a87-11d927b76b2d",
+          "templateId": "a765ff50-6659-445e-9709-993532ee8cfc",
+          "fromTemplate": true,
+          "name": "Wall Vertical",
+          "components": [
+            {
+              "name": "Transform",
+              "config": {
+                "offsetX": 104,
+                "offsetY": 0,
+                "offsetZ": 0,
+                "rotation": 0,
+                "scaleX": 1,
+                "scaleY": 1
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": "ec90b531-05c8-4c83-80b3-da29d3cd2ddd",
+          "templateId": "a765ff50-6659-445e-9709-993532ee8cfc",
+          "fromTemplate": true,
+          "name": "Wall Vertical 1",
+          "components": [
+            {
+              "name": "Transform",
+              "config": {
+                "offsetX": -104,
+                "offsetY": 0,
+                "offsetZ": 0,
+                "rotation": 0,
+                "scaleX": 1,
+                "scaleY": 1
+              }
+            }
+          ],
+          "children": []
+        },
+        {
+          "id": "0f754dc8-612c-434e-bacd-ba047f23a873",
+          "name": "Snake",
+          "components": [
+            {
+              "name": "Transform",
+              "config": {
+                "offsetX": 0,
+                "offsetY": 0,
+                "offsetZ": 0,
+                "rotation": 0,
+                "scaleX": 1,
+                "scaleY": 1
+              }
+            },
+            {
+              "name": "ScriptBundle",
+              "config": {
+                "scripts": [
+                  {
+                    "id": "3df977f7-3651-42bb-9341-ee94789b8127",
+                    "name": "PlayerScript",
+                    "options": {}
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Camera",
+              "config": {
+                "zoom": 1
+              }
+            },
+            {
+              "name": "KeyboardControl",
+              "config": {
+                "inputEventBindings": [
+                  {
+                    "id": "575288e5-86a3-4272-b411-8017e779d4c2",
+                    "key": "ArrowLeft",
+                    "pressed": true,
+                    "keepEmit": false,
+                    "eventType": "MovementDirection",
+                    "attrs": [
+                      {
+                        "id": "c5c2a5ff-b4a6-4dfb-917a-f3ac0ae30bc3",
+                        "name": "x",
+                        "type": "number",
+                        "value": -1
+                      },
+                      {
+                        "id": "061d331d-341b-4352-aa66-f1308dee5123",
+                        "name": "y",
+                        "type": "number",
+                        "value": 0
+                      }
+                    ]
+                  },
+                  {
+                    "id": "3a3b5ccd-7185-4032-82ec-65d74628cdea",
+                    "key": "ArrowUp",
+                    "pressed": true,
+                    "keepEmit": false,
+                    "eventType": "MovementDirection",
+                    "attrs": [
+                      {
+                        "id": "b2a3d132-4d5a-4ca8-9bfc-f21d6c9d97e8",
+                        "name": "x",
+                        "type": "number",
+                        "value": 0
+                      },
+                      {
+                        "id": "775f4154-fcca-479c-ac4b-d2a25c5799c7",
+                        "name": "y",
+                        "type": "number",
+                        "value": -1
+                      }
+                    ]
+                  },
+                  {
+                    "id": "c011a51e-cc75-4722-9e64-4add40340312",
+                    "key": "ArrowRight",
+                    "pressed": true,
+                    "keepEmit": false,
+                    "eventType": "MovementDirection",
+                    "attrs": [
+                      {
+                        "id": "2ac42990-46fe-4863-b749-672280ead828",
+                        "name": "x",
+                        "type": "number",
+                        "value": 1
+                      },
+                      {
+                        "id": "6ceeb8ee-f970-4915-a538-3efe4dfd315b",
+                        "name": "y",
+                        "type": "number",
+                        "value": 0
+                      }
+                    ]
+                  },
+                  {
+                    "id": "b5f2fc27-5f08-4a97-b577-414f6df84a08",
+                    "key": "ArrowDown",
+                    "pressed": true,
+                    "keepEmit": false,
+                    "eventType": "MovementDirection",
+                    "attrs": [
+                      {
+                        "id": "3782d9ee-f0bf-4fad-b89f-0fffdb19a709",
+                        "name": "x",
+                        "type": "number",
+                        "value": 0
+                      },
+                      {
+                        "id": "7d788143-34c0-40bd-9e01-3b1737b51423",
+                        "name": "y",
+                        "type": "number",
+                        "value": 1
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "name": "Score",
+              "config": {}
+            }
+          ],
+          "children": []
+        }
+      ]
+    }
+  ],
+  "templates": [
+    {
+      "id": "c3810062-9f76-477b-8e37-e33aee86dde1",
+      "name": "Wall Horizontal",
+      "components": [
+        {
+          "name": "Transform",
+          "config": {
+            "offsetX": 0,
+            "offsetY": 0,
+            "offsetZ": 0,
+            "rotation": 0,
+            "scaleX": 1,
+            "scaleY": 1
+          }
+        },
+        {
+          "name": "ColliderContainer",
+          "config": {
+            "type": "boxCollider",
+            "collider": {
+              "sizeX": 216,
+              "sizeY": 8,
+              "centerX": 0,
+              "centerY": 0
+            }
+          }
+        },
+        {
+          "name": "Sprite",
+          "config": {
+            "src": "",
+            "width": 216,
+            "height": 8,
+            "slice": 1,
+            "rotation": 0,
+            "sortCenter": [
+              0,
+              0
+            ],
+            "flipX": false,
+            "flipY": false,
+            "sortingLayer": "decorations",
+            "fit": "stretch",
+            "material": {
+              "type": "basic",
+              "options": {
+                "blending": "normal",
+                "color": "#070004",
+                "opacity": 1
+              }
+            }
+          }
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "a765ff50-6659-445e-9709-993532ee8cfc",
+      "name": "Wall Vertical",
+      "components": [
+        {
+          "name": "Transform",
+          "config": {
+            "offsetX": 0,
+            "offsetY": 0,
+            "offsetZ": 0,
+            "rotation": 0,
+            "scaleX": 1,
+            "scaleY": 1
+          }
+        },
+        {
+          "name": "ColliderContainer",
+          "config": {
+            "type": "boxCollider",
+            "collider": {
+              "sizeX": 8,
+              "sizeY": 216,
+              "centerX": 0,
+              "centerY": 0
+            }
+          }
+        },
+        {
+          "name": "Sprite",
+          "config": {
+            "src": "",
+            "width": 8,
+            "height": 216,
+            "slice": 1,
+            "rotation": 0,
+            "sortCenter": [
+              0,
+              0
+            ],
+            "flipX": false,
+            "flipY": false,
+            "sortingLayer": "decorations",
+            "fit": "stretch",
+            "material": {
+              "type": "basic",
+              "options": {
+                "blending": "normal",
+                "color": "#070004",
+                "opacity": 1
+              }
+            }
+          }
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "4e23196d-f7f3-487c-860c-268b6a4665d2",
+      "name": "Snake Segment",
+      "components": [
+        {
+          "name": "Transform",
+          "config": {
+            "offsetX": 0,
+            "offsetY": 0,
+            "offsetZ": 0,
+            "rotation": 0,
+            "scaleX": 1,
+            "scaleY": 1
+          }
+        },
+        {
+          "name": "SnakeSegment",
+          "config": {
+            "index": 0
+          }
+        },
+        {
+          "name": "Sprite",
+          "config": {
+            "src": "",
+            "width": 8,
+            "height": 8,
+            "slice": 1,
+            "rotation": 0,
+            "sortCenter": [
+              0,
+              0
+            ],
+            "flipX": false,
+            "flipY": false,
+            "sortingLayer": "units",
+            "fit": "stretch",
+            "material": {
+              "type": "basic",
+              "options": {
+                "blending": "normal",
+                "color": "#070004",
+                "opacity": 1
+              }
+            }
+          }
+        },
+        {
+          "name": "ColliderContainer",
+          "config": {
+            "type": "boxCollider",
+            "collider": {
+              "sizeX": 6,
+              "sizeY": 6,
+              "centerX": 0,
+              "centerY": 0
+            }
+          }
+        }
+      ],
+      "children": []
+    },
+    {
+      "id": "bc320fe2-3f73-47ff-a230-8faaaec51fef",
+      "name": "Orb",
+      "components": [
+        {
+          "name": "Orb",
+          "config": {}
+        },
+        {
+          "name": "Transform",
+          "config": {
+            "offsetX": 0,
+            "offsetY": 0,
+            "offsetZ": 0,
+            "rotation": 0,
+            "scaleX": 1,
+            "scaleY": 1
+          }
+        },
+        {
+          "name": "Sprite",
+          "config": {
+            "src": "",
+            "width": 8,
+            "height": 8,
+            "slice": 1,
+            "rotation": 0,
+            "sortCenter": [
+              0,
+              0
+            ],
+            "flipX": false,
+            "flipY": false,
+            "sortingLayer": "units",
+            "fit": "stretch",
+            "material": {
+              "type": "basic",
+              "options": {
+                "blending": "normal",
+                "color": "#070004",
+                "opacity": 1
+              }
+            }
+          }
+        },
+        {
+          "name": "ColliderContainer",
+          "config": {
+            "type": "boxCollider",
+            "collider": {
+              "sizeX": 6,
+              "sizeY": 6,
+              "centerX": 0,
+              "centerY": 0
+            }
+          }
+        }
+      ],
+      "children": []
+    }
+  ],
+  "loaders": [],
+  "globalOptions": [
+    {
+      "id": "ce9be6d1-0c77-4d9a-9962-228b9dc701af",
+      "name": "sortingLayers",
+      "type": "array",
+      "value": [
+        "background",
+        "decorations",
+        "units"
+      ]
+    }
+  ],
+  "startSceneId": "8aa8d080-b995-4892-b718-829dd717612c",
+  "startLoaderId": null
+}

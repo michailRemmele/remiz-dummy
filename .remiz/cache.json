@@ -1,0 +1,22 @@
+{
+  "canvas.mainActor.tools.zoom.features.direction": "out",
+  "canvas.mainActor.tools.pointer.features.grid": true,
+  "canvas.mainActor.tools.template.features.preview": true,
+  "canvas.mainActor.tools.template.features.grid": true,
+  "canvas.mainActor.transform.offsetX": 37.08651010937088,
+  "canvas.mainActor.transform.offsetY": 88.55797064260918,
+  "canvas.mainActor.camera.zoom": 1.3957625790044481,
+  "canvas.mainActor.toolController.activeTool": "pointer",
+  "canvas.mainActor.settings.showGrid": true,
+  "canvas.mainActor.settings.gridStep": 8,
+  "canvas.mainActor.settings.gridColor": "#000000",
+  "explorer.activeTab": "level",
+  "explorer.tab.levels.expandedKeys": [
+    "814bb481-8226-4f26-8df4-7963417938ec",
+    "0f754dc8-612c-434e-bacd-ba047f23a873"
+  ],
+  "inspector.activeTab": "entityInspector",
+  "selectedLevel": "814bb481-8226-4f26-8df4-7963417938ec",
+  "explorer.tab.templates.expandedKeys": [],
+  "canvas.mainActor.tools.template.features.templateId": "a765ff50-6659-445e-9709-993532ee8cfc"
+}
