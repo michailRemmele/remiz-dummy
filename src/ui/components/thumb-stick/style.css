@@ -21,6 +21,8 @@
     border: 4px solid var(--thumm-stick-color);
     border-radius: 50%;
 
+    will-change: transform;
+
     pointer-events: none;
 }
 

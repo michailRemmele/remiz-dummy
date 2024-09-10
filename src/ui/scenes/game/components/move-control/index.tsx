@@ -60,6 +60,6 @@ export const MoveControl: FC<MoveControlProps> = ({ className }) => {
   }, []);
 
   return (
-    <ThumbStick className={className} onMove={handleMove} />
+    <ThumbStick className={className} onMove={handleMove} sticky />
   );
 };

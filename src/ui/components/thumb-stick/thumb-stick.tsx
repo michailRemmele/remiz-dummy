@@ -20,9 +20,15 @@ export type ThumbStickProps = {
   className?: string
   align?: 'left' | 'right'
   onMove: (x: number, y: number) => void
+  sticky?: boolean
 };
 
-export const ThumbStick: FC<ThumbStickProps> = ({ className, align = 'left', onMove }) => {
+export const ThumbStick: FC<ThumbStickProps> = ({
+  className,
+  align = 'left',
+  onMove,
+  sticky,
+}) => {
   const areaRef = useRef<HTMLDivElement>(null);
   const controlRef = useRef<HTMLDivElement>(null);
   const observerRef = useRef<HTMLDivElement>(null);
@@ -58,6 +64,27 @@ export const ThumbStick: FC<ThumbStickProps> = ({ className, align = 'left', onM
     };
   }, []);
 
+  const setAreaCenter = useCallback((x: number, y: number) => {
+    if (!stickPositionRef.current) {
+      return;
+    }
+
+    stickPositionRef.current.areaX = Math.floor(x);
+    stickPositionRef.current.areaY = Math.floor(y);
+  }, []);
+
+  const translateStick = useCallback((x: number, y: number) => {
+    if (!areaRef.current) {
+      return;
+    }
+
+    const { areaRadius, observerX, observerY } = stickPositionRef.current;
+    const left = Math.floor(x - observerX - areaRadius);
+    const top = Math.floor(y - observerY - areaRadius);
+
+    areaRef.current.style.transform = `translate(${left}px, ${top}px)`;
+  }, []);
+
   const moveStick = useCallback((event: React.PointerEvent | PointerEvent): void => {
     const { areaX, areaY, areaRadius } = stickPositionRef.current;
 
@@ -66,6 +93,11 @@ export const ThumbStick: FC<ThumbStickProps> = ({ className, align = 'left', onM
 
     if (magnitude > areaRadius) {
       direction.multiplyNumber(areaRadius / magnitude);
+
+      if (sticky) {
+        translateStick(event.clientX - direction.x, event.clientY - direction.y);
+        setAreaCenter(event.clientX - direction.x, event.clientY - direction.y);
+      }
     }
 
     if (controlRef.current) {
@@ -75,21 +107,20 @@ export const ThumbStick: FC<ThumbStickProps> = ({ className, align = 'left', onM
     direction.multiplyNumber(1 / areaRadius);
 
     onMove(direction.x, direction.y);
-  }, [onMove]);
+  }, [onMove, sticky]);
 
   const resetStick = useCallback((): void => {
     if (areaRef.current) {
-      areaRef.current.style.left = '';
-      areaRef.current.style.top = '';
+      areaRef.current.style.position = 'absolute';
+      areaRef.current.style.transform = '';
     }
     if (controlRef.current) {
       controlRef.current.style.transform = '';
     }
 
-    updateArea();
-
+    setAreaCenter(0, 0);
     onMove(0, 0);
-  }, [updateArea, onMove]);
+  }, [onMove]);
 
   const onPointerMove = useCallback((event: PointerEvent): void => {
     if (pointerIdRef.current !== event.pointerId) {
@@ -100,30 +131,24 @@ export const ThumbStick: FC<ThumbStickProps> = ({ className, align = 'left', onM
   }, [moveStick]);
 
   const onPointerDown = useCallback((event: React.PointerEvent): void => {
-    const { areaRadius, observerX, observerY } = stickPositionRef.current;
-    const { clientX, clientY } = event;
-
     if (pointerIdRef.current) {
       return;
     }
 
     pointerIdRef.current = event.pointerId;
 
-    const left = clientX - observerX - areaRadius;
-    const top = clientY - observerY - areaRadius;
-
     if (areaRef.current) {
-      areaRef.current.style.left = `${left}px`;
-      areaRef.current.style.top = `${top}px`;
+      areaRef.current.style.position = 'static';
+      translateStick(event.clientX, event.clientY);
     }
 
-    updateArea();
+    setAreaCenter(event.clientX, event.clientY);
 
     observerRef.current?.setPointerCapture(event.pointerId);
     observerRef.current?.addEventListener('pointermove', onPointerMove);
 
     moveStick(event);
-  }, [updateArea, onPointerMove, moveStick]);
+  }, [onPointerMove, moveStick]);
 
   const onPointerUp = useCallback((event: React.PointerEvent): void => {
     if (pointerIdRef.current !== event.pointerId) {
@@ -148,7 +173,7 @@ export const ThumbStick: FC<ThumbStickProps> = ({ className, align = 'left', onM
       observerRef.current?.removeEventListener('pointermove', onPointerMove);
       onMove(0, 0);
     };
-  }, [updateArea]);
+  }, []);
 
   return (
     <div
