@@ -581,7 +581,8 @@
       "value": [
         "background",
         "decorations",
-        "units"
+        "units",
+        "default"
       ]
     }
   ],
